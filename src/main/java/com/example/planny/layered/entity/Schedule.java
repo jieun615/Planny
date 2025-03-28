@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "schedule")
 public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +21,7 @@ public class Schedule {
     private String task; // 할 일
 
     @Column(nullable = false)
-    private String author; // 작성자명
+    private String username; // 작성자명
 
     @Column(nullable = false)
     private String password; // 비밀번호
@@ -28,7 +29,6 @@ public class Schedule {
     @Column(nullable = false)
     private LocalDateTime createdAt; // 작성일
 
-    @Column(nullable = false)
     private LocalDateTime updatedAt; // 수정일
 
     @PrePersist

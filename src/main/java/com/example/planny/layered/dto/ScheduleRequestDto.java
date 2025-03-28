@@ -9,7 +9,7 @@ public class ScheduleRequestDto {
     private String task;
 
     @NotBlank
-    private String author;
+    private String username;
 
     @NotBlank
     private String password;

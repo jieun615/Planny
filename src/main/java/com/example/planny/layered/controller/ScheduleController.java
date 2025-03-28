@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
 @RestController
 @RequestMapping("/api/schedules")
 @RequiredArgsConstructor
@@ -17,5 +18,17 @@ public class ScheduleController {
     public ResponseEntity<?> createSchedule(@RequestBody @Validated ScheduleRequestDto requestDto) {
         Schedule schedule = scheduleService.createSchedule(requestDto);
         return ResponseEntity.ok(schedule);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateSchedule(@PathVariable Long id, @RequestBody @Validated ScheduleRequestDto requestDto) {
+        Schedule updatedSchedule = scheduleService.updateSchedule(id, requestDto);
+        return ResponseEntity.ok(updatedSchedule);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteSchedule(@PathVariable Long id, @RequestParam String password) {
+        scheduleService.deleteSchedule(id, password);
+        return ResponseEntity.ok("삭제 완료");
     }
 }
