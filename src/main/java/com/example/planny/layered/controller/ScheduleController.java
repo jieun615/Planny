@@ -20,6 +20,16 @@ public class ScheduleController {
         return ResponseEntity.ok(schedule);
     }
 
+    @GetMapping
+    public ResponseEntity<?> getAllSchedules() {
+        return ResponseEntity.ok(scheduleService.getAllSchedules());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getScheduleById(@PathVariable Long id) {
+        return ResponseEntity.ok(scheduleService.getScheduleById(id));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<?> updateSchedule(@PathVariable Long id, @RequestBody @Validated ScheduleRequestDto requestDto) {
         Schedule updatedSchedule = scheduleService.updateSchedule(id, requestDto);

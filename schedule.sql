@@ -1,4 +1,4 @@
-CREATE TABLE schedule (
+CREATE TABLE schedules (
     id INT AUTO_INCREMENT PRIMARY KEY,  -- 고유 식별자 (자동 증가)
     task TEXT NOT NULL,                 -- 할 일 (필수)
     username VARCHAR(100) NOT NULL,       -- 작성자명 (필수)

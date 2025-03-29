@@ -7,6 +7,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ScheduleService {
@@ -19,6 +21,15 @@ public class ScheduleService {
         schedule.setUsername(requestDto.getUsername());
         schedule.setPassword(requestDto.getPassword()); // 나중에 암호화 필요
         return scheduleRepository.save(schedule);
+    }
+
+    public List<Schedule> getAllSchedules() {
+        return scheduleRepository.findAll();
+    }
+
+    public Schedule getScheduleById(Long id) {
+        return scheduleRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("해당 ID의 일정이 존재하지 않습니다."));
     }
 
     @Transactional
